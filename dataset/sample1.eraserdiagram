@@ -1,0 +1,141 @@
+entity-relationship-diagram
+typeface mono
+styleMode shadow
+colorMode bold
+
+
+// title
+title Formula 1 Racing Data Model
+
+// define tables
+races [icon: flag, color: red]{
+  raceId int pk
+  year int
+  round int
+  circuitId int
+  name string
+  date date
+  time time
+  url string
+}
+
+circuits [icon: map-pin, color: green]{
+  circuitId int pk
+  circuitRef string
+  name string
+  location string
+  country string
+  latitude float
+  longitude float
+  altitude int
+  url string
+}
+
+drivers [icon: user, color: blue]{
+  driverId int pk
+  driverRef string
+  number int
+  code string
+  forename string
+  surname string
+  dob date
+  nationality string
+  url string
+}
+
+constructors [icon: users, color: purple]{
+  constructorId int pk
+  constructorRef string
+  name string
+  nationality string
+  url string
+}
+
+results [icon: award, color: orange]{
+  resultId int pk
+  raceId int
+  driverId int
+  constructorId int
+  number int
+  grid int
+  position int
+  positionText string
+  positionOrder int
+  points float
+  laps int
+  time string
+  milliseconds int
+  fastestLap int
+  rank int
+  fastestLapTime string
+  fastestLapSpeed string
+  statusId int
+}
+
+status [icon: check-circle, color: gray]{
+  statusId int pk
+  status string
+}
+
+laptimes [icon: clock, color: yellow]{
+  raceId int
+  driverId int
+  lap int
+  position int
+  time string
+  milliseconds int
+}
+
+pitstops [icon: tool, color: brown]{
+  raceId int
+  driverId int
+  stop int
+  lap int
+  time string
+  duration string
+  milliseconds int
+}
+
+seasons [icon: calendar, color: teal]{
+  year int pk
+  url string
+}
+
+constructorstandings [icon: trending-up, color: violet]{
+  constructorStandingsId int pk
+  raceId int
+  constructorId int
+  points float
+  position int
+  positionText string
+  positionOrder int
+  wins int
+}
+
+driverstandings [icon: trending-up, color: lightblue]{
+  driverStandingsId int pk
+  raceId int
+  driverId int
+  points float
+  position int
+  positionText string
+  positionOrder int
+  wins int
+}
+
+// define relationships
+races.circuitId > circuits.circuitId
+results.raceId > races.raceId
+results.driverId > drivers.driverId
+results.constructorId > constructors.constructorId
+results.statusId > status.statusId
+laptimes.raceId > races.raceId
+laptimes.driverId > drivers.driverId
+pitstops.raceId > races.raceId
+pitstops.driverId > drivers.driverId
+races.year > seasons.year
+constructorstandings.raceId > races.raceId
+constructorstandings.constructorId > constructors.constructorId
+driverstandings.raceId > races.raceId
+driverstandings.driverId > drivers.driverId
+
