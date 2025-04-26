@@ -1,5 +1,15 @@
 with source as (
-    select * from {{ source('raw_data', 'raw_pit_stops') }}
+    select
+        "raceId" as race_id
+        ,"driverId" as driver_id
+        ,stop
+        ,lap
+        ,milliseconds
+        ,duration
+        ,time
+    from {{ source('raw_data', 'raw_pit_stops') }}
 )
 
-select * from source
+select
+    *
+from source

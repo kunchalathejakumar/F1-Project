@@ -1,5 +1,10 @@
 with source as (
-    select * from {{ source('raw_data', 'raw_status') }}
+    select
+        "statusId" as status_id
+        ,status
+    from {{ source('raw_data', 'raw_status') }}
 )
 
-select * from source
+select
+    *
+from source
