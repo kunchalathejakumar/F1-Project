@@ -46,7 +46,8 @@ F1_project/
 
 ## Data Set Details
 
-![Entity Relation Diagram](dataset/ER_Diagram/Entity_Relation_Diagram.svg)
+![Entity Relation Diagram](dataset/ER_Diagram/Entity_Relation_Diagram_light.svg#gh-light-mode-only)
+![Entity Relation Diagram](dataset/ER_Diagram/Entity_Relation_Diagram_dark.svg#gh-dark-mode-only)
 
 ## 🧪 How to Run
 
