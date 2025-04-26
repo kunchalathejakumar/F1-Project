@@ -1,9 +1,7 @@
-entity-relationship-diagram
-typeface mono
-styleMode shadow
-colorMode bold
-
-
+notation crows-foot
+typeface rough
+styleMode plain
+colorMode pastel
 // title
 title Formula 1 Racing Data Model
 

@@ -48,7 +48,7 @@ F1_project/
 
 <!-- <img src="dataset/Entity_Relation_Diagram.svg" alt="Alt text" width="500"/> -->
 
-![Entity Relation Diagram](dataset/Entity_Relation_Diagram.svg)
+![Entity Relation Diagram](dataset/ER Diagram/Entity_Relation_Diagram.svg)
 
 ## 🧪 How to Run
 
