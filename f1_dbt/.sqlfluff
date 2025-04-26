@@ -1,0 +1,36 @@
+[sqlfluff]
+dialect = postgres
+templater = dbt
+exclude_rules = LT01
+
+
+[sqlfluff:rules:jinja.padding]
+offset_spacing = single
+
+[sqlfluff:indentation]
+indented_joins = True
+indented_using_on = False
+allow_implicit_indents = True
+
+[sqlfluff:layout:type:comma]
+line_position = leading
+spacing_after = touch
+
+[sqlfluff:rules:layout.cte_newline]
+force_enable = True
+
+[sqlfluff:rules:layout.spacing]
+indentation_spaces = 2
+
+[sqlfluff:rules:convention.casting_style]
+preferred_type_casting_style = consistent
+
+[sqlfluff:rules:layout.indent]
+indent_unit = tab
+
+[sqlfluff:rules:layout.select_targets]
+wildcard_policy = multiple
+
+[sqlfluff:rules:layout.newlines]
+maximum_empty_lines_inside_statements = 1
+maximum_empty_lines_between_statements = 1
