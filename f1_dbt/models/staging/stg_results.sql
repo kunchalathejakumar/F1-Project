@@ -14,7 +14,7 @@ with source as (
         ,time
         ,milliseconds
         ,number
-        ,fastestlap as fastest_lap
+        ,"fastestLap" as fastest_lap
         ,position
         ,"positionText" as position_text
         ,rank

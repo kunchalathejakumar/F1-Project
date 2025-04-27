@@ -15,7 +15,7 @@ with source as (
         ,position
         ,"positionText" as position_text
         ,milliseconds
-        ,fastestlap
+        ,"fastestLap" as fastest_lap
     from {{ source('raw_data', 'raw_sprint_results') }}
 )
 

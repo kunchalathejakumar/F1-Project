@@ -1,11 +1,11 @@
 with source as (
     select 
-        "driverId"
-        ,"driverRef"
+        "driverId" as driver_id
+        ,"driverRef" as driver_ref
         ,number
         ,code
-        ,forename
-        ,surname
+        ,forename as first_name
+        ,surname as last_name
         ,dob
         ,nationality
         ,url
