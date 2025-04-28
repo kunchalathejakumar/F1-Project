@@ -1,0 +1,202 @@
+version: 2
+
+models:
+  - name: dim_circuits
+    columns:
+    - name: circuit_id
+      tests:
+        - not_null
+        - unique
+    - name: circuit_ref
+    - name: circuit_name
+    - name: location
+    - name: country
+    - name: latitude
+    - name: longitude
+    - name: altitude
+  - name: dim_constructors
+    columns:
+    - name: constructor_id
+      tests:
+        - not_null
+        - unique
+    - name: constructor_ref
+    - name: constructor_name
+    - name: nationality
+  - name: dim_drivers
+    columns:
+    - name: driver_id
+      tests:
+        - not_null
+        - unique
+    - name: driver_ref
+    - name: number
+    - name: code
+    - name: first_name
+    - name: last_name
+    - name: date_of_birth
+    - name: nationality
+  - name: dim_races
+    columns:
+    - name: race_id
+      tests:
+        - not_null
+        - unique
+    - name: circuit_id
+      tests:
+        - not_null
+        - relationships:
+              to: ref('dim_circuits')
+              field: circuit_id
+    - name: year
+    - name: round
+    - name: race_name
+    - name: date
+    - name: time
+  - name: dim_status
+    columns:
+    - name: status_id
+      tests:
+        - not_null
+        - unique
+    - name: status_name
+  - name: fact_constructor_standings
+    columns:
+    - name: constructor_standings_id
+      tests:
+        - not_null
+        - unique
+    - name: race_id
+      tests:
+        - not_null
+        - relationships:
+              to: ref('dim_races')
+              field: race_id
+    - name: constructor_id
+      tests:
+        - not_null
+        - relationships:
+              to: ref('dim_constructors')
+              field: constructor_id
+    - name: cumulative_points
+    - name: constructor_rank
+    - name: wins
+  - name: fact_driver_standings
+    columns:
+    - name: driver_standings_id
+      tests:
+        - not_null
+        - unique
+    - name: race_id
+      tests:
+        - not_null
+        - relationships:
+              to: ref('dim_races')
+              field: race_id
+    - name: driver_id
+      tests:
+        - not_null
+        - relationships:
+              to: ref('dim_drivers')
+              field: driver_id
+    - name: cumulative_points
+    - name: driver_rank
+    - name: wins
+  - name: fact_lap_times
+    columns:
+    - name: race_id
+      tests:
+        - not_null
+        - relationships:
+              to: ref('dim_races')
+              field: race_id
+    - name: driver_id
+      tests:
+        - not_null
+        - relationships:
+              to: ref('dim_drivers')
+              field: driver_id
+    - name: lap_number
+    - name: position_in_lap
+    - name: lap_time
+    - name: lap_time_ms
+  - name: fact_pit_stops
+    columns:
+    - name: race_id
+      tests:
+        - not_null
+        - relationships:
+              to: ref('dim_races')
+              field: race_id
+    - name: driver_id
+      tests:
+        - not_null
+        - relationships:
+              to: ref('dim_drivers')
+              field: driver_id
+    - name: pit_stop
+    - name: pit_lap
+    - name: pit_time
+    - name: pit_duration
+  - name: fact_qualifying_results
+    columns:
+    - name: race_id
+      tests:
+        - not_null
+        - relationships:
+              to: ref('dim_races')
+              field: race_id
+    - name: driver_id
+      tests:
+        - not_null
+        - relationships:
+              to: ref('dim_drivers')
+              field: driver_id
+    - name: constructor_id
+      tests:
+        - not_null
+        - relationships:
+              to: ref('dim_constructors')
+              field: constructor_id
+    - name: qualifying_position
+    - name: q1
+    - name: q2
+    - name: q3
+  - name: fact_race_results
+    columns:
+    - name: race_id
+      tests:
+        - not_null
+        - relationships:
+              to: ref('dim_races')
+              field: race_id
+    - name: driver_id
+      tests:
+        - not_null
+        - relationships:
+              to: ref('dim_drivers')
+              field: driver_id
+    - name: constructor_id
+      tests:
+        - not_null
+        - relationships:
+              to: ref('dim_constructors')
+              field: constructor_id
+    - name: grid
+    - name: position
+    - name: position_text
+    - name: points
+    - name: laps
+    - name: finish_time
+    - name: finish_time_ms
+    - name: fastest_lap
+    - name: fastest_lap_rank
+    - name: fastest_lap_time
+    - name: fastest_lap_speed
+    - name: status_id
+      tests:
+        - not_null
+        - relationships:
+              to: ref('dim_status')
+              field: status_id
+    - name: is_retired
