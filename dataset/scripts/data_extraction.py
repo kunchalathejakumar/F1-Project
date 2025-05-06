@@ -3,7 +3,8 @@ import os
 
 # Define the dataset owner and name
 dataset_name = 'rohanrao/formula-1-world-championship-1950-2020'
-download_dir = 'D:\\MyFiles\\VsCode\\F1_project\\dataset\\raw_files'
+# download_dir = 'D:\\MyFiles\\VsCode\\F1_project\\dataset\\raw_files'
+download_dir = '/opt/airflow/data/raw_files'
 
 try:
     # Create the download directory if it doesn't exist

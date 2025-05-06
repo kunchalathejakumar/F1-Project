@@ -7,14 +7,15 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Configs
-db_host = os.environ.get('POSTGRES_HOST', 'localhost')
+db_host = os.environ.get('POSTGRES_HOST', 'postgres')
 db_name = os.environ.get('POSTGRES_DB')
 db_user = os.environ.get('POSTGRES_USER')
 db_password = os.environ.get('POSTGRES_PASSWORD')
-db_port = int(os.environ.get('POSTGRES_PORT', 5422))
+db_port = int(os.environ.get('POSTGRES_PORT', 5432))
 db_schema = os.environ.get('RAW_SCHEMA')
 
-DATA_DIR = "D://MyFiles//VsCode//F1_project//dataset//raw_files"  # adjust if needed
+# DATA_DIR = "D://MyFiles//VsCode//F1_project//dataset//raw_files"
+DATA_DIR = '/opt/airflow/data/raw_files'
 
 engine = create_engine(f"postgresql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}")
 

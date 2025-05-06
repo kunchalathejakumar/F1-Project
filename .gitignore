@@ -1,2 +1,9 @@
 logs/
 .env
+credentials/
+scripts/.env
+
+airflow/.env
+airflow/logs/
+airflow/dags/__pycache__
+airflow/plugins
