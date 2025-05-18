@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: driver_race_features_v
+    config:
+      materialized: view
+    columns:
+      - name: race_id
+      - name: driver_id
+      - name: constructor_id
+      - name: driver_name
+      - name: driver_nationality
+      - name: constructor_name
+      - name: race_year
+      - name: race_round
+      - name: circuit_name
+      - name: circuit_country
+      - name: grid
+      - name: position
+      - name: points
+      - name: fastest_lap_time
+      - name: fastest_lap_speed
+      - name: retired_flag
+  - name: team_performance_summary_v
+    config:
+      materialized: view
+    columns:
+      - name: constructor_name
+      - name: year
+      - name: wins
+      - name: podiums
+      - name: total_points
+      - name: races_entered
