@@ -4,7 +4,7 @@ with race_results as (
         ,res.driver_id
         ,res.constructor_id
         ,res.grid
-        ,res.position
+        ,cast(case res.position when '\N' then null else res.position end as integer) as position
         ,res.position_text
         ,res.points
         ,res.laps
